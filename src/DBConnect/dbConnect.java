@@ -2,11 +2,16 @@ package DBConnect;
 import java.sql.*;
 public class dbConnect {
         //public String url = "localhost";
-        public String url = "172.16.20.180";
-        public String port = "3306"; //8889
-        public String database = "hacklnjava";
-        public String user = "admin";
-        public String password = "stcs";//root
+        private String url = "172.16.20.180";
+        private String ourl="orcl.ictc.kln.ac.lk";
+        private String oport="1521";
+        private String ouser="sarathch_ps14049";
+        private String opw = "kg2225494";
+        private String oSID= "STCS";
+        private String port = "3306"; //8889
+        private String database = "hacklnjava";
+        private String user = "admin";
+        private String password = "stcs";//root
         public String JDBC_DRIVER = "com.mysql.jdbc.Driver";
         Connection conn = null;
 
@@ -26,6 +31,17 @@ public class dbConnect {
             }
             //return dbstmt;
         }
+
+        public void Conn2DBO(){
+            String DB_URL="jdbc:oralce:thin@"+ourl+":"+oport+":"+oSID;
+            try{
+                conn = DriverManager.getConnection(DB_URL,ouser,opw);
+                System.out.println("connected orcl");
+            }
+            catch(SQLException se){
+                se.printStackTrace();
+            }
+    }
 
 
     public Statement Conn2DB()

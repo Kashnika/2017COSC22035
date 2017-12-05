@@ -16,7 +16,7 @@ public class Main {
         DBConnect.dbConnect CS = new dbConnect();
         stcs=CS.Conn2DB();
         String query="SELECT * FROM userdetails";
-        String query2="INSERT INTO userdetails(UserID,UserName,Email,Password)VALUES(049,'KASH','JKHJ','JKK'))";
+        String query2="INSERT INTO userdetails(UserID,UserName,Email,Password)VALUES(049,'KASH','JKHJ','JKK')";
         try{
             stcs.executeUpdate(query2);
             ResultSet rs=stcs.executeQuery(query);
