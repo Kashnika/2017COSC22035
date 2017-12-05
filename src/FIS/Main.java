@@ -1,6 +1,8 @@
 package FIS;
 
 import DBConnect.*;
+
+import java.io.StringReader;
 import java.sql.*;
 import java.util.Scanner;
 
@@ -8,7 +10,26 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Statement stml = null;
+        Statement stcs =null;
 
+
+        DBConnect.dbConnect CS = new dbConnect();
+        stcs=CS.Conn2DB();
+        String query="SELECT * FROM userdetails";
+        String query2="INSERT INTO userdetails(UserID,UserName,Email,Password)VALUES(049,'KASH','JKHJ','JKK'))";
+        try{
+            stcs.executeUpdate(query2);
+            ResultSet rs=stcs.executeQuery(query);
+            while(rs.next()){
+                int uID=rs.getInt("UserID");
+                String pw=rs.getString("Password");
+                System.out.println("user id"+uID+"password"+pw);
+            }
+        }
+        catch(SQLException se){
+            se.printStackTrace();
+        }
+        CS.closeDB();
         DBConnect.dbConnect DB = new dbConnect();//Object from DB connect
         DB.Connect2DB();//Connect to DB
 
